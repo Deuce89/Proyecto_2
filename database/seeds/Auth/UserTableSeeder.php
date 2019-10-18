@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
+        //$this->disableForeignKeys();
 
         // Add the master administrator, user id of 1
         User::create([
@@ -36,6 +36,6 @@ class UserTableSeeder extends Seeder
             'confirmed' => true,
         ]);
 
-        $this->enableForeignKeys();
+        //$this->enableForeignKeys();
     }
 }

@@ -27,6 +27,10 @@ trait DisableForeignKeys
             'enable' => 'SET CONSTRAINTS ALL IMMEDIATE;',
             'disable' => 'SET CONSTRAINTS ALL DEFERRED;',
         ],
+        'oracle'=> [
+            'enable' => 'ENABLE CONSTRAINT;',
+            'disable' => 'DISABLE CONSTRAINT;',
+        ],
     ];
 
     /**

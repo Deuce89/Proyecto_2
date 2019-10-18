@@ -16,7 +16,7 @@ class PermissionRoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
+        //$this->disableForeignKeys();
 
         // Create Roles
         Role::create(['name' => config('access.users.admin_role')]);
@@ -29,6 +29,6 @@ class PermissionRoleTableSeeder extends Seeder
         // Note: Admin (User 1) Has all permissions via a gate in the AuthServiceProvider
         // $user->givePermissionTo('view backend');
 
-        $this->enableForeignKeys();
+        //$this->enableForeignKeys();
     }
 }

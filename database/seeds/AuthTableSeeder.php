@@ -15,7 +15,7 @@ class AuthTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->disableForeignKeys();
+        //$this->disableForeignKeys();
 
         // Reset cached roles and permissions
         resolve(PermissionRegistrar::class)->forgetCachedPermissions();
@@ -36,6 +36,6 @@ class AuthTableSeeder extends Seeder
         $this->call(PermissionRoleTableSeeder::class);
         $this->call(UserRoleTableSeeder::class);
 
-        $this->enableForeignKeys();
+        //$this->enableForeignKeys();
     }
 }
