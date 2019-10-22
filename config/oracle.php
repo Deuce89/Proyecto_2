@@ -3,9 +3,6 @@
 return [
     'oracle' => [
         'driver'         => 'oracle',
-        //'tns'            => env('DB_TNS', '(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 172.16.142.130)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = XE)))'),
-        //'host'           => env('DB_HOST', '172.16.142.130'),
-        //'port'           => env('DB_PORT', '1521'),
         'tns'           => env('DB_TNS', ''),
         'host'          => env('DB_HOST', ''),
         'port'          => env('DB_PORT', '1521'),
