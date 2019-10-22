@@ -11,7 +11,7 @@
                 </div><!--card-header-->
                 <div class="card-body">
                     
-                    <form method="post" action="{{ route ('admin.clientes.update',$cliente['no_membresia'])}}">
+                    <form method="post" action="{{ route ('admin.clientes.update',$cliente['cod_cliente'])}}">
                     @csrf        
                     <div class="form-row">
                         <div class="form-group col-md-12">

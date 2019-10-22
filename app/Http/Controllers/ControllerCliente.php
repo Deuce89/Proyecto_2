@@ -77,7 +77,7 @@ class ControllerCliente extends Controller
         
         DB::commit(); // Commit if no error
         
-        Log::info('Un cliente ha sido agregado: '.$new_cliente->no_membresia);
+        Log::info('Un cliente ha sido agregado: '.$new_cliente->cod_cliente);
         
         return Redirect::route('admin.clientes')
             ->withFlashInfo('Nuevo Cliente Agregado');
@@ -144,17 +144,6 @@ class ControllerCliente extends Controller
         $cliente->apellido = $request->apellido;
         $cliente->direccion = $request->direccion;
         $cliente->telefono = $request->telefono;
-        
-        // si la pelicula es nueva y ya se sincronizo se marca como update
-        if($cliente->isSynced == 1){
-            $cliente->isUpdated = 1;
-            $cliente->isSynced = 0;
-        } // sino se deja como nuevo registro sin considerar los cambios intermedios.
-        else {
-            $cliente->isUpdated = 0;
-            $cliente->isSynced = 0;    
-        }
-        
         $cliente->save();
 
         if (! $cliente) {
@@ -182,8 +171,7 @@ class ControllerCliente extends Controller
 
         
         $cliente = ModelCliente::find($codCliente);
-        $cliente->isDeleted = 1;
-        $cliente->save();
+        $cliente->delete();
         
         
         Log::info('El siguiente cliente has sido eliminada: '.$cliente->nombre);

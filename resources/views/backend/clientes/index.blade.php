@@ -23,7 +23,7 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>MEMBRESIA</th>
+                            <th>CODIGO CLIENTE</th>
                             <th>NOMBRE</th>
                             <th>APELLIDO</th>
                             <th>DIRECCION</th>
@@ -41,7 +41,7 @@
                                     <td>{{ $cliente->apellido }}</td>
                                     <td>{{ $cliente->direccion }}</td>
                                     <td>{{ $cliente->telefono }}</td>
-                                    <td>@include('backend.clientes.includes.actions', ['no_membresia' => $cliente->no_membresia ])</td>
+                                    <td>@include('backend.clientes.includes.actions', ['cod_cliente' => $cliente->cod_cliente ])</td>
                                 </tr>
                             @endforeach
                         </tbody>
