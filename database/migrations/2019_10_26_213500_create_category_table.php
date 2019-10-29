@@ -14,7 +14,7 @@ class CreateCategoryTable extends Migration
     public function up()
     {
         Schema::create('categoria', function (Blueprint $table) {
-            $table->bigIncrements('cod_subcategoria');
+            $table->bigIncrements('cod_categoria');
             $table->string('nombre', 45);
             $table->Integer('cod_subcategoria1');
             $table->Integer('cod_subcategoria2');
@@ -22,8 +22,8 @@ class CreateCategoryTable extends Migration
             $table->timestamps();
         });
         Schema::table('categoria', function (Blueprint $table) {
-            $table->bigInteger('categoria_cod_subcategoria')->unsigned();
-            $table->foreign('categoria_cod_subcategoria')->references('categoria')->on('cod_subcategoria')->onDelete('cascade');
+            $table->bigInteger('categoria_cod_categoria')->unsigned();
+            $table->foreign('categoria_cod_categoria')->references('cod_categoria')->on('categoria')->onDelete('cascade');
         });
     }
 
@@ -34,10 +34,11 @@ class CreateCategoryTable extends Migration
      */
     public function down()
     {
+        //Schema::table('categoria', function(Blueprint $table){
+        //$table->dropForeign('categoria_categoria_cod_categoria_foreign');
+        //});
+        
         Schema::dropIfExists('categoria');
         
-        Schema::table('categoria', function(Blueprint $table){
-        $table->dropForeign('categoria_cod_subcategoria_foreign');
-        });
     }
 }

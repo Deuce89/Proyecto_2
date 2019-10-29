@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ModelCartProduct extends Model
 {
-    protected $table = 'producto_carro';
+    protected $table = 'productocarro';
     protected $primaryKey = 'cod_prodcarro';
     
     

@@ -15,24 +15,29 @@ class CreateProductTable extends Migration
     {
         Schema::create('producto', function (Blueprint $table) {
             $table->bigIncrements('cod_producto');
-            $table->varchar('nombre', 45);
-            $table->varchar('descripcion', 250);
+            $table->string('nombre', 50);
+            $table->string('descripcion', 250);
             $table->float('precio', 10,2);
             $table->integer('catidad');
-            $table->blob('foto');
-            $table->Integer('cod_subcategoria');
-            $table->Integer('cod_temporada');
+            $table->binary('foto');
+            //$table->Integer('cod_subcategoria');
+            //$table->Integer('cod_temporada');
             $table->timestamps();
         });
         Schema::table('producto', function (Blueprint $table) {
-            $table->foreign('cod_subcategoria')->references('cod_subcategoria')->on('categoria');
+            $table->bigInteger('producto_cod_categoria')->unsigned();
+            $table->bigInteger('producto_cod_temporada')->unsigned();
+            $table->bigInteger('producto_cod_prodcarro')->unsigned();
+            $table->foreign('producto_cod_categoria')->references('cod_categoria')->on('categoria')->onDelete('cascade');
+            $table->foreign('producto_cod_temporada')->references('cod_temporada')->on('temporada')->onDelete('cascade');
+            $table->foreign('producto_cod_prodcarro')->references('cod_prodcarro')->on('producto_carro')->onDelete('cascade');
         });
-        Schema::table('producto', function (Blueprint $table) {
-            $table->foreign('cod_temporada')->references('cod_temporada')->on('temporada');
-        });
-        Schema::table('producto', function (Blueprint $table) {
-            $table->foreign('cod_prodcarro')->references('cod_prodcarro')->on('producto_carro');
-        });
+        //Schema::table('producto', function (Blueprint $table) {
+            //$table->foreign('producto_cod_temporada')->references('cod_temporada')->on('temporada');
+        //});
+        //Schema::table('producto', function (Blueprint $table) {
+            //$table->foreign('producto_cod_prodcarro')->references('cod_prodcarro')->on('producto_carro');
+        //});
     }
 
     /**
@@ -42,6 +47,12 @@ class CreateProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cliente');
+        //Schema::table('producto', function(Blueprint $table){
+        //$table->dropForeign('producto_producto_cod_subcategoria_foreign');
+        //$table->dropForeign('producto_producto_cod_temporada_foreign');
+        //$table->dropForeign('producto_producto_cod_prodcarro_foreign');
+        //});
+        
+        Schema::dropIfExists('producto');
     }
 }

@@ -30,10 +30,12 @@ class CreateCartTable extends Migration
      */
     public function down()
     {
+        //Schema::table('carrocompra', function(Blueprint $table){
+        //$table->dropForeign('carrocompra_cliente_cod_cliente_foreign');
+        //});
+        
         Schema::dropIfExists('carrocompra');
         
-        Schema::table('carrocompra', function(Blueprint $table){
-        $table->dropForeign('cliente_cod_cliente');
-        });
+        
     }
 }

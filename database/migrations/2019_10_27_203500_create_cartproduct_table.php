@@ -13,14 +13,15 @@ class CreateCartProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('producto_carro', function (Blueprint $table) {
+        Schema::create('productocarro', function (Blueprint $table) {
             $table->bigIncrements('cod_prodcarro');
             $table->integer('cod_carrocompra');
             $table->integer('cod_producto');
             $table->timestamps();
         });
-        Schema::table('producto_carro', function (Blueprint $table) {
-            $table->foreign('cod_carrocompra')->references('cod_carrocompra')->on('carrocompra');
+        Schema::table('productocarro', function (Blueprint $table) {
+            $table->bigInteger('productocarro_cod_carrocompra')->unsigned();
+            $table->foreign('productocarro_cod_carrocompra')->references('cod_carrocompra')->on('carrocompra')->onDelete('cascade');
         });
     }
 
@@ -31,6 +32,10 @@ class CreateCartProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('producto_carro');
+        //Schema::table('productocarro', function(Blueprint $table){
+        //$table->dropForeign('productocarro_productocarro_cod_carrocompra_foreign');
+        //});
+        
+        Schema::dropIfExists('productocarro');
     }
 }
