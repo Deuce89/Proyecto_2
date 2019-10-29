@@ -30,7 +30,7 @@ class CreateProductTable extends Migration
             $table->bigInteger('producto_cod_prodcarro')->unsigned();
             $table->foreign('producto_cod_categoria')->references('cod_categoria')->on('categoria')->onDelete('cascade');
             $table->foreign('producto_cod_temporada')->references('cod_temporada')->on('temporada')->onDelete('cascade');
-            $table->foreign('producto_cod_prodcarro')->references('cod_prodcarro')->on('producto_carro')->onDelete('cascade');
+            $table->foreign('producto_cod_prodcarro')->references('cod_prodcarro')->on('productocarro')->onDelete('cascade');
         });
         //Schema::table('producto', function (Blueprint $table) {
             //$table->foreign('producto_cod_temporada')->references('cod_temporada')->on('temporada');
